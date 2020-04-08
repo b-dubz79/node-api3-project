@@ -1,6 +1,7 @@
 const express = require('express');
-
+const userData = require('./userDb');
 const router = express.Router();
+const postData = require('../posts/postDb');
 
 router.post('/', (req, res) => {
   // do your magic!
@@ -33,6 +34,8 @@ router.put('/:id', (req, res) => {
 //custom middleware
 
 function validateUserId(req, res, next) {
+  userData.getById(req.params.id).then(response => console.log(response))
+
   // do your magic!
 }
 
